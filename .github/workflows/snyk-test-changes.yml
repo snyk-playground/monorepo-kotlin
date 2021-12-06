@@ -20,6 +20,8 @@ jobs:
         added_or_modified_file: ${{ needs.build-files-matrix.outputs.added_modified }}
         
     steps:
+      - uses: actions/checkout@v2
+        name: checkout
       - uses: snyk/actions/gradle-jdk11@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
