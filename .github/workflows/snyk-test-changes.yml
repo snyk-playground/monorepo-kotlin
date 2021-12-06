@@ -9,8 +9,8 @@ jobs:
     steps:
     - id: files
       uses: jitterbit/get-changed-files@v1
-      with:
-        format: 'csv'
+      #with:
+      #  format: 'csv'
     outputs:
       matrix: ${{ steps.files.outputs.added_modified }}
   
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: checkout
-        run: echo 'file ${{ matrix.added_or_modified_file }}'
+        #run: echo 'file ${{ matrix.added_or_modified_file }}'
       - uses: snyk/actions/gradle-jdk11@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
