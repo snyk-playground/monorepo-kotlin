@@ -10,14 +10,14 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1
       with:
-        format: 'json'
+        format: 'csv'
   
   snyk-test-changes:
     needs: build-files-matrix
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        added_or_modified_file: ${{ fromJson(needs.build-files-matrix.outputs.added_modified) }}
+        added_or_modified_file: ${{ needs.build-files-matrix.outputs.added_modified }}
         
     steps:
       - uses: snyk/actions/gradle-jdk11@master
