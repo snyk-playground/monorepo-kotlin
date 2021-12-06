@@ -9,8 +9,8 @@ jobs:
     steps:
     - id: files
       uses: jitterbit/get-changed-files@v1
-      #with:
-      #  format: 'csv'
+      with:
+        format: 'csv'
     outputs:
       matrix: ${{ steps.files.outputs.added_modified }}
   
