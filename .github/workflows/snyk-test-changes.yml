@@ -1,4 +1,4 @@
-name: perform-import
+name: snyk-test-changes
 on:
   pull_request
 
