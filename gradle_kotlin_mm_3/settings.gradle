@@ -1,4 +1,0 @@
-rootProject.name = "MultiModuleProject"
-include ':presentation'
-include ':data'
-include ':domain'
