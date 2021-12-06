@@ -11,13 +11,15 @@ jobs:
       uses: jitterbit/get-changed-files@v1
       with:
         format: 'csv'
+    outputs:
+      matrix: ${{ steps.files.outputs.added_modified }}
   
   snyk-test-changes:
     needs: build-files-matrix
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        added_or_modified_file: ${{ needs.build-files-matrix.files.outputs.added_modified }}
+        added_or_modified_file: ${{ needs.build-files-matrix.outputs.matrix }}
         
     steps:
       - uses: actions/checkout@v2
