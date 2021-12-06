@@ -24,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: checkout
+        run: echo 'file ${{ matrix.added_or_modified_file }}'
       - uses: snyk/actions/gradle-jdk11@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
