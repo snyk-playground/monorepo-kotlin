@@ -3,14 +3,34 @@ on:
   pull_request
 
 jobs:
-  snyk-test:
+  build-files-matrix:
+    runs-on: ubuntu-latest
+
     steps:
     - id: files
       uses: jitterbit/get-changed-files@v1
       with:
-        format: 'csv'
-    - run: |
-        mapfile -d ',' -t added_modified_files < <(printf '%s,' '${{ steps.files.outputs.added_modified }}')
-        for added_modified_file in "${added_modified_files[@]}"; do
-          echo "Do something with this ${added_modified_file}."
-        done
+        format: 'json'
+  
+  snyk-test-changes:
+    needs: build-files-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        added_or_modified_file: ${{ fromJson(needs.build-files-matrix.outputs.added_modified) }}
+        
+    steps:
+      - uses: snyk/actions/gradle-jdk11@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --file=${{ matrix.added_or_modified_file }}
+      
+      
+#      with:
+#        format: 'csv'
+#    - run: |
+#        mapfile -d ',' -t added_modified_files < <(printf '%s,' '${{ steps.files.outputs.added_modified }}')
+#        for added_modified_file in "${added_modified_files[@]}"; do
+#          echo "Do something with this ${added_modified_file}."
+#        done
