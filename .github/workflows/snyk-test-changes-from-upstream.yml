@@ -27,6 +27,6 @@ jobs:
           # authenticate snyk
           snyk auth ${{ secrets.SNYK_TOKEN }}
           # make our local executable
-          chmod +x "${GITHUB_WORKSPACE}/scripts/snyk_git_diff.sh"
-          ${GITHUB_WORKSPACE}/scripts/snyk_git_diff.sh test
+          chmod +x "${GITHUB_WORKSPACE}/.github/scripts/snyk_git_diff.sh"
+          ${GITHUB_WORKSPACE}/.github/scripts/snyk_git_diff.sh test
 
