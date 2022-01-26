@@ -26,5 +26,5 @@ jobs:
         run: |
           # make our local executable
           chmod +x "${GITHUB_WORKSPACE}/scripts/snyk_git_diff.sh"
-          ${GITHUB_WORKSPACE}/scripts/snyk_git_diff.sh
+          ${GITHUB_WORKSPACE}/scripts/snyk_git_diff.sh test
 
