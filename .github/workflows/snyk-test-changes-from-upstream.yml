@@ -15,7 +15,7 @@ jobs:
           git config user.name "snyk test automation"
           git config user.email "<>"
           
-     - name: setup snyk
+      - name: setup snyk
         run: |
           # download latest snyk cli and make it executable
           curl https://static.snyk.io/cli/latest/snyk-macos -o snyk
