@@ -18,7 +18,7 @@ jobs:
       - name: setup snyk
         run: |
           # download latest snyk cli and make it executable
-          curl https://static.snyk.io/cli/latest/snyk-macos -o snyk
+          curl https://static.snyk.io/cli/latest/snyk-linux -o snyk
           chmod +x ./snyk
           mv ./snyk /usr/local/bin/
 
