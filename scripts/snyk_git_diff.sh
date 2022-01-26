@@ -18,7 +18,7 @@ for diff in $(git --no-pager diff ${SNYK_DIFF_UPSTREAM_REF} HEAD --name-only --d
     if [ "${SNYK_GIT_DIFF_FILENAME}" == "$(basename ${diff})" ]; then
         # echo "snyk ${snyk_args[*]} --file=${diff}"
         snyk ${snyk_args[*]} --file=${diff}
-        if [[ $? -gt > $response_code ]]; then
+        if [[ $? -gt $response_code ]]; then
             response_code=$?
         fi
     fi
