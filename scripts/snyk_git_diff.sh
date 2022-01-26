@@ -14,7 +14,7 @@ git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
 response_code=0
 
 for diff in $(git --no-pager diff ${SNYK_DIFF_UPSTREAM_REF} HEAD --name-only --diff-filter=d); do
-    echo "checking ${diff}"
+    # echo "checking ${diff}"
     if [ "${SNYK_GIT_DIFF_FILENAME}" == "$(basename ${diff})" ]; then
         # echo "snyk ${snyk_args[*]} --file=${diff}"
         snyk ${snyk_args[*]} --file=${diff}
