@@ -6,6 +6,8 @@ declare -x SNYK_GIT_DIFF_FILENAME="${SNYK_GIT_DIFF_FILENAME:=build.gradle}"
 
 read -ra snyk_args <<< "$*"
 
+git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+
 read -ra git_diff <<< $(git --no-pager diff ${SNYK_DIFF_UPSTREAM_REF} HEAD --name-only --diff-filter=d )
 
 for diffs in "${git_diff[@]}"; do
