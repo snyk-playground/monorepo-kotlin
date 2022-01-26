@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -x SNYK_GIT_DIFF_UPSTREAM_REF=${SNYK_DIFF_UPSTREAM_REF:=origin\/main}
+declare -x SNYK_GIT_DIFF_UPSTREAM_REF=${SNYK_DIFF_UPSTREAM_REF:=main}
 
 declare -x SNYK_GIT_DIFF_FILENAME="${SNYK_GIT_DIFF_FILENAME:=build.gradle}"
 
