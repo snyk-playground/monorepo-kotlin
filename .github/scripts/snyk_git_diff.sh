@@ -28,4 +28,4 @@ for diff in $(git --no-pager diff ${SNYK_DIFF_UPSTREAM_REF} HEAD --name-only --d
     fi
 done
 
-exit $response_code
+exit $final_response_code
