@@ -22,8 +22,8 @@ for diff in $(git --no-pager diff ${SNYK_DIFF_UPSTREAM_REF} HEAD --name-only --d
         snyk ${snyk_args[*]} --file=${diff}
         response_code=$?
         echo "response code: ${response_code}"
-        if [[ $response_code -gt $response_code ]]; then
-            response_code=$?
+        if [[ $response_code -gt $final_response_code ]]; then
+            final_response_code=$response_code
         fi
     fi
 done
